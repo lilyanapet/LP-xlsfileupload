@@ -1,0 +1,76 @@
+    <div ng-controller="XlsFileUploadImportReportController">
+    <umb-header>
+        <h1 class="title">
+            Upload Reports
+        </h1>
+        <div class="intro-text">
+            <p>
+               This report gives information on all file uploads!
+            </p>
+        </div>
+
+    </umb-header>
+    <div class="umb-panel-body" id="xlsFileUploadReport">
+        <div class="umb-pane">
+
+            <div class="umb-listview">
+
+                <umb-load-indicator ng-show="sciaIsLoading"></umb-load-indicator>
+
+                <div class="row">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <a href="#" prevent-default class="sortable" ng-click="sciaOrder('scia.ImportedDate')" title="Order by Imported Date">Imported Date</a>
+                                    <i class="icon" ng-class="{'icon-navigation-up': sciaReverse, 'icon-navigation-down': !sciaReverse}" ng-show="sciaPredicate  == 'scia.ImportedDate'"></i>
+                                </th>
+                                <th>
+                                    <a href="#" prevent-default class="sortable" ng-click="sciaOrder('scia.UserName')" title="Order by User">User</a>
+                                    <i class="icon" ng-class="{'icon-navigation-up': sciaReverse, 'icon-navigation-down': !sciaReverse}" ng-show="sciaPredicate == 'scia.UserName'"></i>
+                                </th>
+                                <th>
+                                    <a href="#" prevent-default class="sortable" ng-click="sciaOrder('scia.RecordsCount')" title="Order by RecordsCount">Records Count</a>
+                                    <i class="icon" ng-class="{'icon-navigation-up': sciaReverse, 'icon-navigation-down': !sciaReverse}" ng-show="sciaPredicate  == 'scia.RecordsCount'"></i>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-show="sciaData.length > 0" ng-repeat="scia in sciaData" ng-class="{selected: isRowSelected(scia.id)}">
+                                <td>{{scia.ImportedDate}}</td>
+                                <td>{{scia.UserName}}</td>
+                                <td>{{scia.RecordsCount}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr ng-show="sciaData.length > 0">
+                                <th>
+                                    <div class="pagination">
+                                        Items {{sciaRangeFrom}}-{{sciaRangeTo}} of {{sciaTotalItems}}
+                                    </div>
+                                </th>
+                                <th colspan="2">
+                                    <div class="pagination pagination-right" ng-show="sciaTotalPages > 1">
+
+                                        <umb-pagination page-number="sciaCurrentPage"
+                                                        total-pages="sciaTotalPages"
+                                                        on-next="sciaNextPage"
+                                                        on-prev="sciaPrevPage"
+                                                        on-go-to-page="sciaSetPage">
+                                        </umb-pagination>
+
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr ng-hide="sciaData.length > 0">
+                                <td colspan="3">
+                                    <p class="text-center"><strong>No records found.</strong></p>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
