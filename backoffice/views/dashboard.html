@@ -1,0 +1,108 @@
+<div ng-controller="XlsFileUploadDashboardController">
+ 
+        <div class="umb-panel-header xlsFileUpload">
+            <h1 class="title">
+                Import records
+            </h1>
+            <div class="intro-text">
+                <p>
+                    Click Browse to locate a copy of the spreadsheet and then import to load the new data.
+                </p>
+                <p>
+                    The old information is completely removed when a new spreadsheet is imported.
+                </p>
+                <p class="txtRed">Please reload the page after upload!</p>
+            </div>
+
+        </div>
+        <div class="umb-panel-body xlsFileUpload" id="xlsfileupload">
+            <div class="umb-pane">
+                <div class="umb-sub-header">
+                    <umb-load-indicator ng-show="isLoading"></umb-load-indicator>
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="button importMessage" ng-show="showImportMessage" id="importMessage" ng-model="importMessage"></div>
+                            <div class="col-xs-12">
+                                <form enctype="multipart/form-data" method="post">
+                                    <input type="hidden" name="currUserName" ng-model="currUserName" />
+                                    <input type="file" class="form-control" name="xlsFile" id="xlsFile" ng-model="file" />
+                                    <input type="button" class="button btn btn-default" ng-click="xlsFileUpload()" name="Import" value="Import" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="umb-listview">
+                    <div class="row">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <a href="#" prevent-default class="sortable" ng-click="order('sci.CompanyName')" title="Order by Company Name">Company Name</a>
+                                        <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'sci.CompanyName'"></i>
+                                    </th>
+                                    <th>
+                                        <a href="#" prevent-default class="sortable" ng-click="order('sci.Availability')" title="Order by Availability">Availability</a>
+                                        <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'sci.Availability'"></i>
+                                    </th>
+                                    <th>
+                                        <a href="#" prevent-default class="sortable" ng-click="order('sci.DateOfIncorporation')" title="Order by Incorporation Date">Incorporation</a>
+                                        <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'sci.DateOfIncorporation'"></i>
+                                    </th>
+                                    <th>
+                                        <a href="#" prevent-default class="sortable" ng-click="order('sci.ReservedDate')" title="Order by Reserved Date">Reserved</a>
+                                        <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'sci.ReservedDate'"></i>
+                                    </th>
+                                    <th>
+                                        <a href="#" prevent-default class="sortable" ng-click="order('sci.SoldDate')" title="Order by Sold Date">Sold</a>
+                                        <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'sci.SoldDate'"></i>
+                                    </th>
+                                    <th>
+                                        <a href="#" prevent-default class="sortable" ng-click="order('sci.CompanyStruckOffDate')" title="Order by Struck Off">Struck Off</a>
+                                        <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'sci.CompanyStruckOffDate'"></i>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="sciData.length > 0" ng-repeat="sci in sciData" ng-class="{selected: isRowSelected(sci.id)}">
+                                    <td>{{sci.CompanyName}}</td>
+                                    <td>{{sci.Availability}}</td>
+                                    <td>{{sci.DateOfIncorporation}}</td>
+                                    <td>{{sci.ReservedDate}}</td>
+                                    <td>{{sci.SoldDate}}</td>
+                                    <td>{{sci.CompanyStruckOffDate}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr ng-show="sciData.length > 0">
+                                    <th>
+                                        <div class="pagination">
+                                            Items {{rangeFrom}}-{{rangeTo}} of {{totalItems}}
+                                        </div>
+                                    </th>
+                                    <th colspan="5">
+                                        <div class="pagination pagination-right" ng-show="totalPages > 1">
+
+                                            <umb-pagination page-number="currentPage"
+                                                            total-pages="totalPages"
+                                                            on-next="nextPage"
+                                                            on-prev="prevPage"
+                                                            on-go-to-page="setPage">
+                                            </umb-pagination>
+
+                                        </div>
+                                    </th>
+                                </tr>
+                                <tr ng-hide="sciData.length > 0">
+                                    <td colspan="6">
+                                        <p class="text-center"><strong>No records found.</strong></p>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
