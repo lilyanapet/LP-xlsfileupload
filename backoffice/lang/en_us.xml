@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<language alias="en_us" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+<creator>
+  <name>LP</name>
+</creator>
+<area alias="sections">
+  <key alias="xlsFileUpload">Xls File Upload</key>
+</area>
+<area alias="xlsFileUpload">
+  <key alias="xlsFileUpload">Xls File Upload</key>
+</area>
+</language>
