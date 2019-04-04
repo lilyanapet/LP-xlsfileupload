@@ -1,0 +1,49 @@
+.title {
+    color: #0094ff;
+    font-weight: bolder;
+    margin: 15px 20px 0 20px;
+    padding: 3px 5px;
+    font-size: 18px !important;
+    line-height: 1.4;
+    height: auto;
+    width: 100%;
+}
+.intro-text {
+    margin: 5px 0 0 20px;
+    padding: 3px 5px;
+}
+
+.xlsFileUpload.umb-panel-header p {
+    margin: 0;
+}
+
+.xlsFileUpload.umb-panel-header {
+    max-height: 250px;
+    height: auto !important;
+    min-height: 100px;
+}
+
+.xlsFileUpload.importMessage {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0094ff
+}
+
+.xlsFileUpload.umb-panel-body {
+    top: 130px;
+}
+
+p.txtRed {
+    color: darkred;
+    font-style:italic;
+}
+
+.umb-editor-wrapper.-no-footer .umb-editor-container {
+    overflow-x: hidden;
+}
+
+@media(max-width:710px) {
+    .xlsFileUpload.umb-panel-body {
+        top: 150px;
+    }
+}
