@@ -1,0 +1,10 @@
+{
+    javascript: [
+        "~/App_Plugins/XlsFileUpload/backoffice/js/XlsFileUpload.Dashboard.Controller.js",
+		"~/App_Plugins/XlsFileUpload/backoffice/js/XlsFileUpload.ImportReport.Controller.js",
+		"~/App_Plugins/XlsFileUpload/backoffice/js/XlsFileUpload.Resources.js"		
+    ],
+    css: [
+        "~/App_Plugins/XlsFileUpload/backoffice/css/xlsFileUpload.css"
+    ]
+}
